@@ -29,7 +29,7 @@
   role was, and if they met their individual goals.
 
   Person 2: JJK Curse Lord. You must use either NCURSES or DearIMGUI to create a
-  UI for your game
+  UI for your game (Michael Moran)
 
   Person 3: Spiderman/Spiderwoman (AKA The Thread Lord): you must use
   multithreading in an interesting way, such as handling IO in a separate thread
