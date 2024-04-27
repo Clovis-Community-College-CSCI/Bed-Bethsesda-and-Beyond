@@ -63,5 +63,4 @@
   also responsible for generating a UML diagram showing how all the pieces fit
   together.
 
-  Person 9: Screenwriter. Must come up with at least 40 lines of dialogue, 40
-  lines of environmental description, and a theme/story to the game.
+  Person 9: Screenwriter(This, this is Jerrick Wallace). Must come up with at least 40 lines of dialogue, 40 lines of environmental description, and a theme/story to the game.
