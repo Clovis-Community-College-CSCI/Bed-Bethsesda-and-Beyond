@@ -26,7 +26,7 @@
   final report which talks about your development process, write the README.md
   which will include the documentation of how to play the game. The README needs
   colors and images. Explain what each person did on the project, what their
-  role was, and if they met their individual goals.
+  role was, and if they met their individual goals. (Mohamed Mohamed)
 
   Person 2: JJK Curse Lord. You must use either NCURSES or DearIMGUI to create a
   UI for your game (Michael Moran)
