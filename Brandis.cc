@@ -17,41 +17,82 @@ using namespace std;
 
 bool Wire1, Wire2, Wire3, Wire4, Wire5, Wire6, Wire7, Wire8, Wire9, Wire10 = false; // False if uncut, True if cut
 
+void DisplayBoard() {
+	// Outputs the Board
+	// If Wire = false, cout Uncut wire
+	// If Wire = true, cout Cut wire
+	cout << "  ┌" << RESET << WireFull << "┐" << endl;
+	cout << "  |○     ○|" << endl;
+	if (Wire1 == false) cout << "1 |" << YELLOW << WireFull << RESET << "|" << endl;
+	if (Wire1 == true) cout << "1 |" << YELLOW << WireCut << RESET << "|" << endl;
+	if (Wire2 == false) cout << "2 |" << RED << WireFull << RESET << "|" << endl;
+	if (Wire2 == true) cout << "2 |" << RED << WireCut << RESET << "|" << endl;
+	if (Wire3 == false) cout << "3 |" << YELLOW << WireFull << RESET << "|" << endl;
+	if (Wire3 == true) cout << "3 |" << YELLOW << WireCut << RESET << "|" << endl;
+	if (Wire4 == false) cout << "4 |" << RED << WireFull << RESET << "|" << endl;
+	if (Wire4 == true) cout << "4 |" << RED << WireCut << RESET << "|" << endl;
+	if (Wire5 == false) cout << "5 |" << CYAN << WireFull << RESET << "|" << endl;
+	if (Wire5 == true) cout << "5 |" << CYAN << WireCut << RESET << "|" << endl;
+	if (Wire6 == false) cout << "6 |" << GREEN << WireFull << RESET << "|" << endl;
+	if (Wire6 == true) cout << "6 |" << GREEN << WireCut << RESET << "|" << endl;
+	if (Wire7 == false) cout << "7 |" << RED << WireFull << RESET << "|" << endl;
+	if (Wire7 == true) cout << "7 |" << RED << WireCut << RESET << "|" << endl;
+	if (Wire8 == false) cout << "8 |" << CYAN << WireFull << RESET << "|" << endl;
+	if (Wire8 == true) cout << "8 |" << CYAN << WireCut << RESET << "|" << endl;
+	if (Wire9 == false) cout << "9 |" << YELLOW << WireFull << RESET << "|" << endl;
+	if (Wire9 == true) cout << "9 |" << YELLOW << WireCut << RESET << "|" << endl;
+	if (Wire10 == false) cout << "10|" << GREEN << WireFull << RESET << "|" << endl;
+	if (Wire10 == true) cout << "10|" << GREEN << WireCut << RESET << "|" << endl;
+	cout << "  |○     ○|" << endl;
+	cout << "  └" << RESET << WireFull << "┘" << endl;
+}
+
+void Dupe() {cout << "You already cut that wire." << endl; } // Quick function for output
+
 int main() {
 	bool Complete = false; // Check if the puzzle is completed
 	bool Failed = false; // Check if puzzle has been failed
 
-	// Outputs the Board
-	cout << "  ┌" << RESET << WireFull << "┐" << endl;
-	cout << "1 |" << YELLOW << WireFull << RESET << "|" << endl;
-	cout << "2 |" << RED << WireFull << RESET << "|" << endl;
-	cout << "3 |" << YELLOW << WireFull << RESET << "|" << endl;
-	cout << "4 |" << RED << WireFull << RESET << "|" << endl;
-	cout << "5 |" << CYAN << WireFull << RESET << "|" << endl;
-	cout << "6 |" << GREEN << WireFull << RESET << "|" << endl;
-	cout << "7 |" << RED << WireFull << RESET << "|" << endl;
-	cout << "8 |" << CYAN << WireFull << RESET << "|" << endl;
-	cout << "9 |" << YELLOW << WireFull << RESET << "|" << endl;
-	cout << "10|" << GREEN << WireFull << RESET << "|" << endl;
-	cout << "  └" << RESET << WireFull << "┘" << endl;
-
-	// Input Loop
-	while (Complete == false and Failed == false) {
-		while(true) {
-		int WireInput = 0;
-		cout << "Which wire would you like to cut?" << endl;
-		try {
-			cin >> WireInput;
-			if (WireInput >= 1 and WireInput <= 10) {
-				cout << "You entered: " << WireInput << endl;
-				break;
-			} else {
-			cout << "Invalid input. Try again." << endl;
-			}
-		} catch(...) {
-			cout << "Invalid input. Try again." << endl;
-		}
-	}
 	
+	// Input Loop
+	while (Complete == false and Failed == false) { // Continue puzzle until completed or failed
+		while(true) {
+			int WireInput = 0;
+		   	DisplayBoard();
+			cout << "Which wire would you like to cut?" << endl;
+			try {
+				cin >> WireInput;
+				if (WireInput >= 1 and WireInput <= 10) { // Cut the wire if it is in the correct range
+					cout << "You cut Wire " << WireInput << endl;
+					// Checks if wire is already cut
+					if (WireInput == 1 and Wire1 == true) Dupe(); 
+					if (WireInput == 2 and Wire2 == true) Dupe(); 
+					if (WireInput == 3 and Wire3 == true) Dupe(); 
+					if (WireInput == 4 and Wire4 == true) Dupe(); 
+					if (WireInput == 5 and Wire5 == true) Dupe(); 
+					if (WireInput == 6 and Wire6 == true) Dupe(); 
+					if (WireInput == 7 and Wire7 == true) Dupe(); 
+					if (WireInput == 8 and Wire8 == true) Dupe(); 
+					if (WireInput == 9 and Wire9 == true) Dupe(); 
+					if (WireInput == 10 and Wire10 == true) Dupe(); 
+					// Sets wire to cut
+					if (WireInput == 1) Wire1 = true; 
+					if (WireInput == 2) Wire2 = true; 
+					if (WireInput == 3) Wire3 = true; 
+					if (WireInput == 4) Wire4 = true; 
+					if (WireInput == 5) Wire5 = true; 
+					if (WireInput == 6) Wire6 = true; 
+					if (WireInput == 7) Wire7 = true; 
+					if (WireInput == 8) Wire8 = true; 
+					if (WireInput == 9) Wire9 = true; 
+					if (WireInput == 10) Wire10 = true;
+					break;
+				} else {
+					cout << "Invalid input. Try again." << endl;
+				}
+			} catch(...) {
+				cout << "Invalid input. Try again." << endl;
+			}
+		}
 	}
 }
