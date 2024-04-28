@@ -22,28 +22,28 @@ void DisplayBoard() {
 	// If Wire = false, cout Uncut wire
 	// If Wire = true, cout Cut wire
 	cout << "  ┌" << RESET << WireFull << "┐" << endl;
-	cout << "  |○     ○|" << endl;
-	if (Wire1 == false) cout << "1 |" << YELLOW << WireFull << RESET << "|" << endl;
-	if (Wire1 == true) cout << "1 |" << YELLOW << WireCut << RESET << "|" << endl;
-	if (Wire2 == false) cout << "2 |" << RED << WireFull << RESET << "|" << endl;
-	if (Wire2 == true) cout << "2 |" << RED << WireCut << RESET << "|" << endl;
-	if (Wire3 == false) cout << "3 |" << YELLOW << WireFull << RESET << "|" << endl;
-	if (Wire3 == true) cout << "3 |" << YELLOW << WireCut << RESET << "|" << endl;
-	if (Wire4 == false) cout << "4 |" << RED << WireFull << RESET << "|" << endl;
-	if (Wire4 == true) cout << "4 |" << RED << WireCut << RESET << "|" << endl;
-	if (Wire5 == false) cout << "5 |" << CYAN << WireFull << RESET << "|" << endl;
-	if (Wire5 == true) cout << "5 |" << CYAN << WireCut << RESET << "|" << endl;
-	if (Wire6 == false) cout << "6 |" << GREEN << WireFull << RESET << "|" << endl;
-	if (Wire6 == true) cout << "6 |" << GREEN << WireCut << RESET << "|" << endl;
-	if (Wire7 == false) cout << "7 |" << RED << WireFull << RESET << "|" << endl;
-	if (Wire7 == true) cout << "7 |" << RED << WireCut << RESET << "|" << endl;
-	if (Wire8 == false) cout << "8 |" << CYAN << WireFull << RESET << "|" << endl;
-	if (Wire8 == true) cout << "8 |" << CYAN << WireCut << RESET << "|" << endl;
-	if (Wire9 == false) cout << "9 |" << YELLOW << WireFull << RESET << "|" << endl;
-	if (Wire9 == true) cout << "9 |" << YELLOW << WireCut << RESET << "|" << endl;
-	if (Wire10 == false) cout << "10|" << GREEN << WireFull << RESET << "|" << endl;
-	if (Wire10 == true) cout << "10|" << GREEN << WireCut << RESET << "|" << endl;
-	cout << "  |○     ○|" << endl;
+	cout << "  │○     ○│" << endl;
+	if (Wire1 == false) cout << "1 │" << YELLOW << WireFull << RESET << "│" << endl;
+	if (Wire1 == true) cout << "1 │" << YELLOW << WireCut << RESET << "│" << endl;
+	if (Wire2 == false) cout << "2 │" << RED << WireFull << RESET << "│" << endl;
+	if (Wire2 == true) cout << "2 │" << RED << WireCut << RESET << "│" << endl;
+	if (Wire3 == false) cout << "3 │" << YELLOW << WireFull << RESET << "│" << endl;
+	if (Wire3 == true) cout << "3 │" << YELLOW << WireCut << RESET << "│" << endl;
+	if (Wire4 == false) cout << "4 │" << RED << WireFull << RESET << "│" << endl;
+	if (Wire4 == true) cout << "4 │" << RED << WireCut << RESET << "│" << endl;
+	if (Wire5 == false) cout << "5 │" << CYAN << WireFull << RESET << "│" << endl;
+	if (Wire5 == true) cout << "5 │" << CYAN << WireCut << RESET << "│" << endl;
+	if (Wire6 == false) cout << "6 │" << GREEN << WireFull << RESET << "│" << endl;
+	if (Wire6 == true) cout << "6 │" << GREEN << WireCut << RESET << "│" << endl;
+	if (Wire7 == false) cout << "7 │" << RED << WireFull << RESET << "│" << endl;
+	if (Wire7 == true) cout << "7 │" << RED << WireCut << RESET << "│" << endl;
+	if (Wire8 == false) cout << "8 │" << CYAN << WireFull << RESET << "│" << endl;
+	if (Wire8 == true) cout << "8 │" << CYAN << WireCut << RESET << "│" << endl;
+	if (Wire9 == false) cout << "9 │" << YELLOW << WireFull << RESET << "│" << endl;
+	if (Wire9 == true) cout << "9 │" << YELLOW << WireCut << RESET << "│" << endl;
+	if (Wire10 == false) cout << "10│" << GREEN << WireFull << RESET << "│" << endl;
+	if (Wire10 == true) cout << "10│" << GREEN << WireCut << RESET << "│" << endl;
+	cout << "  │○     ○│" << endl;
 	cout << "  └" << RESET << WireFull << "┘" << endl;
 }
 
