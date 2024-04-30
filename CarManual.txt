@@ -1,0 +1,15 @@
+MANUAL
+If there are 3 yellow wires, cut the wire in the 10th position.
+If there are 3 red wires, cut the first red wire. 
+If the total number of blue wires is even, cut the last blue wire.
+Always cut the first green wire. Unless there is 3 or more green wires, then cut none of them. 
+If there are less than 3 yellow wires, cut the wire in the 3rd position. X 
+If there is 1 yellow wire, cut every green wire. X
+If the total number of red wires is odd, cut the wire in the 5th position.
+If there is a red wire in the 3rd position, cut the wire in the 1st position. X
+If there is 1 blue wire total, cut it. X
+If all of the blue and green wires on the board are cut, cut the wire in the 1st position.
+If all of the red wires on the board are cut, cut all wires on the board. X
+If all yellow wires on the board are uncut, cut the first green wire. X
+
+Answer: 1 2 5 6 8 10

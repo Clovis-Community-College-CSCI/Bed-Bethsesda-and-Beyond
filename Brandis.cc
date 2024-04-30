@@ -53,17 +53,35 @@ int main() {
 	bool Complete = false; // Check if the puzzle is completed
 	bool Failed = false; // Check if puzzle has been failed
 
-	
+
 	// Input Loop
 	while (Complete == false and Failed == false) { // Continue puzzle until completed or failed
 		while(true) {
+			if (Wire1 == true and Wire2 == true and Wire3 == false and Wire4 == false and Wire5 == true and 
+				Wire6 == true and Wire7 == false and Wire8 == true and Wire9 == false and Wire10 == true) { // If all of the correct wires are cut
+				cout << "You successfully completed the puzzle!" << endl;
+				Complete = true;
+				break;
+			}
+			if (Wire3 == true or Wire4 == true or Wire7 == true or Wire9 == true) {
+				cout << "You cut the wrong wire!" << endl;
+				cout << "The car exploded!" << endl;
+				Failed = true;
+				break;
+			}
 			int WireInput = 0;
-		   	DisplayBoard();
-			cout << "Which wire would you like to cut?" << endl;
+			DisplayBoard();
+			cout << "Which wire would you like to cut? (Enter Q to exit)" << endl;
 			try {
-				cin >> WireInput;
+				string Input;
+				cin >> Input;
+				if (Input == "Q" or Input == "q") {
+					cout << "Exiting..." << endl;
+					return 0;
+				}
+				WireInput = stoi(Input);
 				if (WireInput >= 1 and WireInput <= 10) { // Cut the wire if it is in the correct range
-					cout << "You cut Wire " << WireInput << endl;
+					cout << "You cut Wire " << WireInput << "." << endl;
 					// Checks if wire is already cut
 					if (WireInput == 1 and Wire1 == true) Dupe(); 
 					if (WireInput == 2 and Wire2 == true) Dupe(); 
