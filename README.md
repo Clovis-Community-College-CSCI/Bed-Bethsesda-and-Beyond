@@ -39,7 +39,7 @@
   Person 4: DJ Bridges (the artist formerly known as the BRIDGEngineer) you must
   make a soundtrack and sound effects for your game in BRIDGES. It's fine if the
   user has to open a web page and hit play themselves. You need to make original
-  music and sound, not plagiarizing.
+  music and sound, not plagiarizing.(jose-possibly, if mutiplayer role is taken)
 
   Person 5: Inheritor of Suffering. You must make a class heirarchy of heroes
   and monsters and have a vector of shared_ptrs holding all the actors in the
