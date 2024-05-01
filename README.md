@@ -65,4 +65,7 @@
 
   Person 9: Screenwriter(This, this is Jerrick Wallace). Must come up with at least 40 lines of dialogue, 40 lines of environmental description, and a theme/story to the game.
 
-Report Day 1: Confirmed theme of the game which is a prison break game. We got a finished a wire cutting  which the player will have to go through during the game. We also got a server and client .cc files made and so far it is able to connect with one another. General map was drawn out for the prison as well.
+Reports: 
+Day 1: Confirmed theme of the game which is a prison break game. We got a finished a wire cutting  which the player will have to go through during the game. We also got a server and client .cc files made and so far it is able to connect with one another. General map was drawn out for the prison as well.
+
+Day 2: The RPG UI and Map baseline was completed today. Also the characters for the game was added into a header file. We also set up a meeting for tomorrow in order to update each other and clarify any questions/ concerns if necessary. 
