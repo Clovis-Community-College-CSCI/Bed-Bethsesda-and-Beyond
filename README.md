@@ -69,3 +69,5 @@ Reports:
 Day 1: Confirmed theme of the game which is a prison break game. We got a finished a wire cutting  which the player will have to go through during the game. We also got a server and client .cc files made and so far it is able to connect with one another. General map was drawn out for the prison as well.
 
 Day 2: The RPG UI and Map baseline was completed today. Also the characters for the game was added into a header file. We also set up a meeting for tomorrow in order to update each other and clarify any questions/ concerns if necessary. 
+
+Day 3: Today, the Padlock puzzle got finished and works with ncurses. A guard class for the prison guards was created as well. A thread.h header was added. Also had a meeting to discuess the overall foundation/flow of the game. Some thoughts are: Prisoner riddle and using a lockpick.
