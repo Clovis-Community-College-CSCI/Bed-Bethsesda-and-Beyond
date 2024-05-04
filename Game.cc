@@ -42,21 +42,21 @@ while (true) {
 int ch = getch(); //Wait for the user to input and has TIMEOUT delay
 if (ch == 'q' or ch == 'Q') break;
 else if (ch == RIGHT){
-if (!map.hasWater(x+1, y) and  !map.hasWall(x+1,y)){
+if (!map.isDoor(x+1, y) and  !map.hasWall(x+1,y)){
 x++;
 if (x>= Map :: SIZE) x = Map :: SIZE -1;
 } }
 else if (ch == LEFT) {
-    if (!map.hasWater(x-1, y) and  !map.hasWall(x-1, y)) {
+    if (!map.isDoor(x-1, y) and  !map.hasWall(x-1, y)) {
 x--;
 if ( x < 0) x = 0;}
 } else if (ch == UP) {
-    if(!map.hasWater(x, y-1) and !map.hasWall(x, y-1)) {
+    if(!map.isDoor(x, y-1) and !map.hasWall(x, y-1)) {
 y--;
 if (y <0) y = 0;
 }}
 else if (ch == DOWN) {
-    if(!map.hasWater(x, y+1) and !map.hasWall(x,y+1) ){
+    if(!map.isDoor(x, y+1) and !map.hasWall(x,y+1) ){
 y++;
 if (y >= Map :: SIZE) y= Map :: SIZE -1;
 }}
