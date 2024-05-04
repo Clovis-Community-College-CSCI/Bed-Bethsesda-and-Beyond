@@ -93,6 +93,15 @@ public:
 	}
    };
 
+   class Warden : public Inmate {
+     public:
+        Warden() {
+          set_Hp(200);
+          set_Atk(80);
+        }
+   };
+
+
    class Guard  : public Inmate {
      public:
        Guard() {
