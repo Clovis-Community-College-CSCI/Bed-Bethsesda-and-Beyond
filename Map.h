@@ -60,7 +60,7 @@ void init_map() {
     }
 }
 
-//Drawing display tiles aeound (x,y)
+//Drawing display tiles around (x,y)
 
 void draw(int x, int y) {
 int start_x = x - DISPLAY/2;
