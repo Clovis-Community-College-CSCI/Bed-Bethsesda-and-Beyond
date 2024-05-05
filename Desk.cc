@@ -244,7 +244,7 @@ int main() {
 		}
 		if (win == true) {
 			cout << "You found the code horay" << endl;
-			break;
+			return 0;
 		}
 		if (chances == 3) {
 			cout << "You can hear the gaurds coming" << endl;
