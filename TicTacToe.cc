@@ -6,6 +6,8 @@ using namespace std;
 
 char board[3][3] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 char currentPlayer = 'X';
+bool playerWin = false;
+
 
 void drawBoard() { // Draws the board
 	cout << "——————————————" << endl;
@@ -118,7 +120,7 @@ int findBestMove() {
     // Simulate each possible move
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
-            if (board[i][j] != 'X' && board[i][j] != 'O') {
+            if (;board[i][j] != 'X' && board[i][j] != 'O') {
                 char temp = board[i][j];
                 board[i][j] = currentPlayer;
                 scores.push_back(minimax('O'));
@@ -137,7 +139,6 @@ int findBestMove() {
     }
     return moves[bestMoveIndex];
 }
-
 int TicTacToemain() {
     int move;
     cout << "Welcome to Tic Tac Toe!" << endl;
@@ -159,9 +160,30 @@ int TicTacToemain() {
         drawBoard();
         if (checkWin()) {
             cout << "Player " << currentPlayer << " wins!" << endl;
+			if (currentPlayer == 'X') {
+				playerWin = true;
+			}
+			
+			if (playerWin == false) {
+				board[0][0] = '1';
+				board[0][1] = '2';
+				board[0][2] = '3';
+				board[1][0] = '4';
+				board[1][1] = '5';
+				board[1][2] = '6';
+				board[2][0] = '7';
+				board[2][1] = '8';
+				board[2][2] = '9';
+			}
+			return 0;
+		}
+			/*else {
+				resetBoard();	
+			}
         } else if (checkTie()) {
             cout << "It's a tie!" << endl;
-        }
+			resetBoard();
+        }*/
         switchPlayer();
     }
 

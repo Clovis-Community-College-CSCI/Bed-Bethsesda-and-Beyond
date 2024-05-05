@@ -49,10 +49,11 @@ void DisplayBoard() {
 
 void Dupe() {cout << "You already cut that wire." << endl; } // Quick function for output
 
-int CarMain() {
-	bool Complete = false; // Check if the puzzle is completed
-	bool Failed = false; // Check if puzzle has been failed
+bool Complete = false; // Check if the puzzle is completed
+bool Failed = false; // Check if puzzle has been failed
 
+
+int CarMain() {
 
 	// Input Loop
 	while (Complete == false and Failed == false) { // Continue puzzle until completed or failed
@@ -61,11 +62,13 @@ int CarMain() {
 				Wire6 == true and Wire7 == false and Wire8 == true and Wire9 == false and Wire10 == true) { // If all of the correct wires are cut
 				cout << "You successfully completed the puzzle!" << endl;
 				Complete = true;
-				break;
+
+				return 0;
 			}
 			if (Wire3 == true or Wire4 == true or Wire7 == true or Wire9 == true) {
 				cout << "You cut the wrong wire!" << endl;
 				cout << "The car exploded!" << endl;
+				cout << "YOU LOSE!" << endl;
 				Failed = true;
 				break;
 			}
