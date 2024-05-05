@@ -93,11 +93,25 @@ public:
 	}
    };
 
-   class Warden : public Inmate {
+   class WardenKerney : public Inmate {
      public:
-        Warden() {
+        WardenKerney() {
           set_Hp(200);
           set_Atk(80);
+        }
+	    void Lecture() {
+	cout << "For labtime go spend a week in solitary confinement!" << endl;
+	}
+	    void PetPeeve() {
+	cout << "Don't repeat yourself!" << endl;
+	}
+   };
+
+   class Mencarelli : public Inmate {
+     public:
+        Mencarelli() {
+         set_Hp(5);
+         set_Atk(1);
         }
    };
 
