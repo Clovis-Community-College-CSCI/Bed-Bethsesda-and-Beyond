@@ -1,5 +1,7 @@
 #include "Map.h"
 #include <unistd.h>
+#include <vector>
+
 const int MAX_FPS = 90;
 const unsigned int TIMEOUT = 10;
 
@@ -110,25 +112,23 @@ else if (ch == ERR) { //If the player presses nothing, nothing will happen.
 
 if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change to x or y coord
 
+	if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
+		for (size_t i = 0; i < Map::SIZE; i++) {
+			for(size_t j = 0; j < Map::SIZE; j++) {
+				if (map.objectLocation(j,i) == Map::BDOOR) { //Retrieves the location of every instance of BDOOR
+					map.changeObject(j, i, Map::OPEN); //Changes every instance of BDOOR to OPEN after player touches BKEY
+				}
+			}
+		}
+	}
+
 map.draw(x,y); //Creates the map using the draw function from Map Class everytime there is a change to x or y coord
 
 mvprintw(Map :: DISPLAY+1,0, "X: %i Y: %i\n", x,y); //Displays player's current position.
 
 refresh(); //Refreshes map after player input or TIMEOUT
-3
 
-/* still need to make changes
-if (map.get(x,y) == Map :: KEY) {
-map.set(x,y, Map :: OPEN) ;
-Key++;
-    } 
-else if (map.get(x,y) == Map :: WALL) {
-	x = old_x;
-	y = old_y;
 }
-*/
-
-    }
 
 //Sets old value to new position of x or y to be ready to be checked again
 old_x = x; 
@@ -141,11 +141,6 @@ usleep(1'000'000/MAX_FPS); //Determines max framerate for the game.
 
 //Ends NCURSES once while loop no longer == True
 turn_off_ncurses();
-}
-
-
-void helloW() {
-	cout <<"Hello World"<<endl;
 }
 
 

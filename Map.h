@@ -16,10 +16,14 @@ public:
 static const char YOU = '@';
 static const char INMATE = 'O'; 
 static const char WALL = '#';
-static const char DOOR = '=';
+static const char BDOOR = '=';
+static const char GDOOR = '=';
+static const char YDOOR = '=';
 static const char OPEN = '.';
 static const char GUARD = 'G';
-static const char KEY = 'K';
+static const char BKEY = 'K';
+static const char GKEY = 'K';
+static const char YKEY = 'K';
 static const size_t SIZE = 400;
 static const size_t DISPLAY = 30;
 
@@ -63,9 +67,12 @@ void init_map() {
 		map.at(21).at(i) = WALL;
 	}
 	for (size_t i = (SIZE/2) - 2; i <= (SIZE/2) + 2; i++){ //Player's Cell Door
-		map.at(21).at(i) = DOOR;
+		map.at(21).at(i) = BDOOR;
 	}
-	map.at(15).at((SIZE/2)-7) = KEY;
+	map.at(15).at((SIZE/2)-7) = BKEY;
+	
+	map.at(15).at((SIZE/2)-5) = GKEY;
+	 
 
 
 
@@ -114,31 +121,50 @@ for (size_t i = start_y; i <= end_y; i++) { //Total rows displayed on screen
      }
 
      else {
-     int color = 1;
-     if (map.at(i).at(j) == WALL) 
-     color = 5;
-     else if (map.at(i).at(j) == DOOR)
-     color = 2;
-     else if (map.at(i).at(j) == YOU)
-     color = 3;
-     else if (map.at(i).at(j) == KEY)
-     color = 4;
-     else if (map.at(i).at(j) == INMATE)
-     color = 6;
-     else if (map.at(i).at(j) == GUARD)
-     color =7;
+     	int color = 1;
+     	if (map.at(i).at(j) == WALL) 
+     	color = 5;
+     	else if (map.at(i).at(j) == BDOOR)
+     	color = 2;
+ 	 	else if (map.at(i).at(j) == GDOOR)
+     	color = 7;
+	 	else if (map.at(i).at(j) == YDOOR)
+     	color = 4;
+     	else if (map.at(i).at(j) == YOU)
+     	color = 3;
+     	else if (map.at(i).at(j) == BKEY)
+     	color = 2;
+     	else if (map.at(i).at(j) == GKEY)
+     	color = 7;
+     	else if (map.at(i).at(j) == YKEY)
+     	color = 4;
+     	else if (map.at(i).at(j) == INMATE)
+     	color = 3;
+     	else if (map.at(i).at(j) == GUARD)
+     	color = 5;
 
-     attron(COLOR_PAIR(color));
-     mvaddch(i-start_y, j-start_x, map.at(i).at(j));
-     attroff(COLOR_PAIR(color));
+     	attron(COLOR_PAIR(color));
+     	mvaddch(i-start_y, j-start_x, map.at(i).at(j));
+     	attroff(COLOR_PAIR(color));
      }
 }
 }
 }
 
+
+char objectLocation(int x, int y) {
+	return map.at(y).at(x);
+	}
+
+void changeObject(int x, int y, char object) {
+	map.at(y).at(x) = object;
+
+}
 //Checks for doors, prevents players from moving past doors
 bool isDoor(int x, int y) {
-    return map.at(y).at(x) == DOOR;
+    return map.at(y).at(x) == BDOOR ||
+		map.at(y).at(x) == GDOOR ||
+		map.at(y).at(x) == YDOOR;
     }
 
 //Check for walls, prevents player from moving past wall
@@ -146,6 +172,10 @@ bool hasWall(int x, int y) {
     return map.at(y).at(x) == WALL;
 	}
 
+//Checks if player touches a key
+bool isKey(int x, int y, char keyColor) {
+	return map.at(y).at(x) == keyColor;
+}
 
 
 
