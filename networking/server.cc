@@ -2,10 +2,6 @@
 #include <iostream>
 #include <string>
 #include <boost/asio.hpp>
-//#include <unistd.h>
-//#include <boost/bind/bind.hpp>
-//#include <boost/shared_ptr.hpp>
-//#include <boost/enable_shared_from_this.hpp>
 #include <thread>
 #include <vector>
 
@@ -57,7 +53,7 @@ cout << "Waiting for the connection with the client"<<endl;
 		} else {
 			cout << "nope, this connect did not work: \n";
 		}}
-	//	io_context.run();
+
 	} catch (exception& e) {
 		cerr << e.what() << endl;
 	}
