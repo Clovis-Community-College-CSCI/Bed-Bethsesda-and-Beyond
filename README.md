@@ -71,3 +71,7 @@ Day 1: Confirmed theme of the game which is a prison break game. We got a finish
 Day 2: The RPG UI and Map baseline was completed today. Also the characters for the game was added into a header file. We also set up a meeting for tomorrow in order to update each other and clarify any questions/ concerns if necessary. 
 
 Day 3: Today, the Padlock puzzle got finished and works with ncurses. A guard class for the prison guards was created as well. A thread.h header was added. Also had a meeting to discuess the overall foundation/flow of the game. Some thoughts are: Prisoner riddle and using a lockpick.
+
+Day 4: Server.cc file was worked on and forweard progress. Ideas like a car manual was discuessed. Also getting a code to use towards the finish of the game was talked about as well.
+
+Day 5: Tic Tac Toe was started, which is one of the puzzles we will have in the game. 
