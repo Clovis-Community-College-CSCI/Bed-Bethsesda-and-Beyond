@@ -188,7 +188,7 @@ public:
 	    }
    };
 
-int main() {
+int Vectormain() {
      //Shared pointers for Heroes
     std::shared_ptr<JohnAnglin> john = std:: make_shared<JohnAnglin>();
     std::shared_ptr<ClarenceAnglin> clarence = std::make_shared<ClarenceAnglin>();
