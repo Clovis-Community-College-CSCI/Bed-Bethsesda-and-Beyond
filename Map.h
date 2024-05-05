@@ -17,13 +17,12 @@ static const char YOU = '@';
 static const char INMATE = 'O'; 
 static const char WALL = '#';
 static const char BDOOR = '=';
-static const char GDOOR = '=';
-static const char YDOOR = '=';
+static const char GDOOR = '-';
+static const char YDOOR = '_';
 static const char OPEN = '.';
 static const char GUARD = 'G';
 static const char BKEY = 'K';
-static const char GKEY = 'K';
-static const char YKEY = 'K';
+static const char GKEY = 'k';
 static const size_t SIZE = 400;
 static const size_t DISPLAY = 30;
 
@@ -69,9 +68,9 @@ void init_map() {
 	for (size_t i = (SIZE/2) - 2; i <= (SIZE/2) + 2; i++){ //Player's Cell Door
 		map.at(21).at(i) = BDOOR;
 	}
+	//map.at(14).at((SIZE/2)-5) = GKEY;
 	map.at(15).at((SIZE/2)-7) = BKEY;
 	
-	map.at(15).at((SIZE/2)-5) = GKEY;
 	 
 
 
@@ -136,8 +135,6 @@ for (size_t i = start_y; i <= end_y; i++) { //Total rows displayed on screen
      	color = 2;
      	else if (map.at(i).at(j) == GKEY)
      	color = 7;
-     	else if (map.at(i).at(j) == YKEY)
-     	color = 4;
      	else if (map.at(i).at(j) == INMATE)
      	color = 3;
      	else if (map.at(i).at(j) == GUARD)

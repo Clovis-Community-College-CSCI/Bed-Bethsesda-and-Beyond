@@ -122,6 +122,17 @@ if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change t
 		}
 	}
 
+	if (map.isKey(x , y , Map::GKEY)) { //Runs isKey function from Map.h
+		for (size_t i = 0; i < Map::SIZE; i++) {
+			for(size_t j = 0; j < Map::SIZE; j++) {
+				if (map.objectLocation(j,i) == Map::GDOOR) { //Retrieves the location of every instance of BDOOR
+					map.changeObject(j, i, Map::OPEN); //Changes every instance of BDOOR to OPEN after player touches BKEY
+				}
+			}
+		}
+	}
+
+
 map.draw(x,y); //Creates the map using the draw function from Map Class everytime there is a change to x or y coord
 
 mvprintw(Map :: DISPLAY+1,0, "X: %i Y: %i\n", x,y); //Displays player's current position.
