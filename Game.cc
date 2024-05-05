@@ -48,7 +48,7 @@ turn_on_ncurses(); //Runs function in main
 
 Map map; //Creates map instance from Map class in Map.h
 
-x = Map :: SIZE /2, y = Map:: SIZE / 2;//Starts player in middle of the map
+x = Map :: SIZE /2, y = 1;//Starts player at the top of the map
 
 int old_x = -1, old_y = -1;
 
@@ -61,7 +61,7 @@ if (ch == 'q' or ch == 'Q') {
 }
 
 //Player input for Right Arrow Key, checks if x coord is not a door or wall.
-//Only allows movement if current position + 1 is not a door or wall.
+//Only allows movement if current positio3n + 1 is not a door or wall.
 else if (ch == RIGHT){
 
 	if (!map.isDoor(x+1, y) and  !map.hasWall(x+1,y)){
@@ -115,6 +115,7 @@ map.draw(x,y); //Creates the map using the draw function from Map Class everytim
 mvprintw(Map :: DISPLAY+1,0, "X: %i Y: %i\n", x,y); //Displays player's current position.
 
 refresh(); //Refreshes map after player input or TIMEOUT
+3
 
 /* still need to make changes
 if (map.get(x,y) == Map :: KEY) {
@@ -141,4 +142,10 @@ usleep(1'000'000/MAX_FPS); //Determines max framerate for the game.
 //Ends NCURSES once while loop no longer == True
 turn_off_ncurses();
 }
+
+
+void helloW() {
+	cout <<"Hello World"<<endl;
+}
+
 
