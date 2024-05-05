@@ -103,15 +103,26 @@ public:
 
 
    class Guard  : public Inmate {
+	 private:
+	   bool movingRight = true; // Tracking the direction of movement
      public:
        Guard() {
          set_Hp(150);
          set_Atk(10);
        }
+	   void move() {
+	   if(movingRight) {
+	     cout << "Guard moves right." << endl;
+	   }else {
+	     cout << "Guard moves right." << endl;
+	   }
+	    movingRight = !movingRight;
+	   }
        void AI() override {
         cout << "Guard is patrolling the area." << endl;
+		   move();
        }
-   };
+	};
 
    class AlCapone : public Inmate {
      public:
