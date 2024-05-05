@@ -1,5 +1,6 @@
 #include "Map.h"
 #include <unistd.h>
+#include "Brandis.cc"
 #include <vector>
 
 const int MAX_FPS = 90;
@@ -110,9 +111,16 @@ else if (ch == ERR) { //If the player presses nothing, nothing will happen.
 ;
 }
 
+//Map refresh and player movement conditions
 if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change to x or y coord
 
-	if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
+	if (map.isKey(x, y, Map::BKEY)) {
+		map.removeMap();
+		CarMain();
+
+	}
+
+	/*if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
 		for (size_t i = 0; i < Map::SIZE; i++) {
 			for(size_t j = 0; j < Map::SIZE; j++) {
 				if (map.objectLocation(j,i) == Map::BDOOR) { //Retrieves the location of every instance of BDOOR
@@ -120,7 +128,7 @@ if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change t
 				}
 			}
 		}
-	}
+	}*/
 
 	if (map.isKey(x , y , Map::GKEY)) { //Runs isKey function from Map.h
 		for (size_t i = 0; i < Map::SIZE; i++) {

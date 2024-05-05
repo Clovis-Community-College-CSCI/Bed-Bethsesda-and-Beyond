@@ -174,6 +174,10 @@ bool isKey(int x, int y, char keyColor) {
 	return map.at(y).at(x) == keyColor;
 }
 
+void removeMap() {
+	map.clear();
+
+}
 
 
 
