@@ -30,7 +30,9 @@ void displayWelcomeMessage() {
 
 //}
 
+
 int TicTacToemain();
+void lockPuzzle();
 
 int main() {
 	/*
@@ -44,6 +46,8 @@ int main() {
 
 	cout << "Thank you for playing!" << endl;
 */
+	//TEST CASE 1: Map
+	cout << "Test Case 1: Map" << endl;
 	Map map;
 	map.changeObject(15, (Map::SIZE / 2) - 7, Map::YOU);
 	map.draw(Map::SIZE / 2, 15);
@@ -58,9 +62,26 @@ int main() {
 		cout << "No door found at this location." << endl;
 	}
 	map.draw(Map::SIZE / 2, 15);
-
+	
+	//TEST CASE 2: TicTacToe
 	cout << "Test Case 2: Tic Tac Toe Gameplay" << endl;
 	TicTacToemain();
+
+	//TEST CASE 3: Puzzle Lock
+	
+	void lockPuzzle() {
+		LockPuzzle lockPuzzle;
+
+		lockPuzzle.solve();
+
+		bool isCorrect = lockPuzzle.verify();
+		
+		if (isCorrect) {
+			cout << "Congrats! You're in >:D" << endl;
+		} else {
+			cout << "Sorry, combo ain't it. Try again. :(" << endl;
+		}
+	}
 
 	return 0;
 }
