@@ -14,17 +14,17 @@ public:
 
 //Characters and objects
 static const char YOU = '@';
-static const char INMATE = 'O'; 
+static const char INMATE = '0'; 
 static const char WALL = '#';
 static const char BDOOR = '=';
 static const char GDOOR = '-';
 static const char YDOOR = '_';
-static const char OPEN = '.';
+static const char OPEN = ' ';
 static const char GUARD = 'G';
 static const char BKEY = 'K';
-static const char GKEY = 'k';
+static const char NPC = 'O';
 static const size_t SIZE = 400;
-static const size_t DISPLAY = 30;
+static const size_t DISPLAY = 40;
 
 //Function to initialize the map
 void init_map() {
@@ -35,7 +35,7 @@ void init_map() {
 	//For loop that resizes each row to have a length of SIZE and initializes every element to '.'
 	//Effectively creates baseline for map size allowing the '.' to be changed later.
     for (auto &v : map) {
-		v.resize(SIZE, '.'); //Amount of dots determined by SIZE x SIZE
+		v.resize(SIZE, ' '); //Amount of dots determined by SIZE x SIZE
 	}
 
     for (size_t i = 0; i < SIZE; i++) { //For loop for rows of the map
@@ -70,8 +70,87 @@ void init_map() {
 	}
 	//map.at(14).at((SIZE/2)-5) = GKEY;
 	map.at(15).at((SIZE/2)-7) = BKEY;
+
+	//Left and Right corridor outside Player Cell		
+	for (size_t i = 22; i < 150; i++) {
+		map.at(i).at(187) = WALL;
+	}
+	for (size_t i = 22; i <= 100; i++) {
+		map.at(i).at(213) = WALL;
+	}
+
+	//Mess Hall Border
+	for (size_t i = 214; i <= 264; i++) {//Top
+		map.at(99).at(i) = WALL;
+	}
+	for (size_t i = 188; i <=264; i++) {//Bottom
+		map.at(149).at(i) = WALL;
+	}
+	for (size_t i = 100; i < 123; i++) {//Top Left
+		map.at(i).at(213) = WALL;
+	}
+	for (size_t i = 128; i < 150; i++) {//Bottom Left
+		map.at(i).at(213) = WALL;
+	}
+	for (size_t i = 100; i < 150; i++) {//Top Left
+		map.at(i).at(263) = WALL;
+	}
+
+	//Mess Hall Tables
+	//Top Table
+	for (size_t i = 230; i <= 250; i++) {//Top Layer
+		map.at(105).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 250; i++) {//Middle Layer
+		map.at(106).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 250; i++) {//Bottom Layer
+		map.at(107).at(i) = WALL;
+	}
 	
-	 
+	//Middle Table
+	for (size_t i = 230; i <= 250; i++) {//Top Layer
+		map.at(124).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 250; i++) {//Middle Layer
+		map.at(125).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 250; i++) {//Bottom Layer
+		map.at(126).at(i) = WALL;
+	}
+	
+	//Bottom Table
+	for (size_t i = 230; i <= 250; i++) {//Top Layer
+		map.at(141).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 250; i++) {//Middle Layer
+		map.at(142).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 250; i++) {//Bottom Layer
+		map.at(143).at(i) = WALL;
+	}
+	
+	//Inmates at Tables
+	map.at(108).at(232) = INMATE;
+	map.at(108).at(235) = INMATE;
+	map.at(108).at(238) = NPC;
+	map.at(108).at(241) = INMATE;
+	map.at(108).at(244) = INMATE;
+	map.at(108).at(247) = INMATE;
+	map.at(104).at(232) = INMATE;
+	map.at(104).at(235) = INMATE;
+	map.at(104).at(238) = INMATE;
+	map.at(104).at(241) = INMATE;
+	map.at(104).at(244) = NPC;
+	map.at(104).at(247) = INMATE;
+
+
+
+
+
+
+
+
 
 
 
@@ -133,8 +212,8 @@ for (size_t i = start_y; i <= end_y; i++) { //Total rows displayed on screen
      	color = 3;
      	else if (map.at(i).at(j) == BKEY)
      	color = 2;
-     	else if (map.at(i).at(j) == GKEY)
-     	color = 7;
+     	else if (map.at(i).at(j) == NPC)
+     	color = 4;
      	else if (map.at(i).at(j) == INMATE)
      	color = 3;
      	else if (map.at(i).at(j) == GUARD)

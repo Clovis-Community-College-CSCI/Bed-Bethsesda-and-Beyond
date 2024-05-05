@@ -46,7 +46,7 @@ int main() {
 
 int x,y; // x and y coords. Used to display current player pos and check boundaries.
 
-printf("Hello World! X: %i Y: %i\n", x, y); //Prints this after NCURSES ends, allows determination of NCURSES state.
+printf("YOU LOSE!\n"); //Prints this after NCURSES ends, allows determination of NCURSES state.
 
 turn_on_ncurses(); //Runs function in main
 
@@ -168,24 +168,51 @@ if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
 				if (map.objectLocation(j,i) == Map::BDOOR) { //Retrieves the location of every instance of BDOOR
 					map.changeObject(j, i, Map::OPEN); //Changes every instance of BDOOR to OPEN after player touches BKEY
 				}
-			}
-		}
-	}
-
-	if (map.isKey(x , y , Map::GKEY)) { //Runs isKey function from Map.h
-		for (size_t i = 0; i < Map::SIZE; i++) {
-			for(size_t j = 0; j < Map::SIZE; j++) {
-				if (map.objectLocation(j,i) == Map::GDOOR) { //Retrieves the location of every instance of BDOOR
-					map.changeObject(j, i, Map::OPEN); //Changes every instance of BDOOR to OPEN after player touches BKEY
+				if (map.objectLocation(j,i) == Map::BKEY) {
+					map.changeObject(j, i, Map::OPEN);
 				}
 			}
 		}
+	mvprintw(26 , Map::DISPLAY+3, "Cell Key");
 	}
 
 
 map.draw(x,y); //Creates the map using the draw function from Map Class everytime there is a change to x or y coord
 
-mvprintw(Map :: DISPLAY+1,0, "X: %i Y: %i\n", x,y); //Displays player's current position.
+mvprintw(15 , Map::DISPLAY+14, "X: %i Y: %i\n", x,y); //Displays player's current position.
+
+//Inventory Box
+//Top
+mvprintw(25 , Map::DISPLAY+2, "---------------------------------");
+
+//Left side
+mvprintw(25 , Map::DISPLAY+1, "|");
+mvprintw(26 , Map::DISPLAY+1, "|");
+mvprintw(27 , Map::DISPLAY+1, "|");
+mvprintw(28 , Map::DISPLAY+1, "|");
+mvprintw(29 , Map::DISPLAY+1, "|");
+mvprintw(30 , Map::DISPLAY+1, "|");
+mvprintw(31 , Map::DISPLAY+1, "|");
+mvprintw(32 , Map::DISPLAY+1, "|");
+mvprintw(33 , Map::DISPLAY+1, "|");
+mvprintw(34 , Map::DISPLAY+1, "|");
+mvprintw(35 , Map::DISPLAY+1, "|");
+
+//Bottom
+mvprintw(35 , Map::DISPLAY+2, "--------------------------------");
+
+//Right side
+mvprintw(25 , Map::DISPLAY+34, "|");
+mvprintw(26 , Map::DISPLAY+34, "|");
+mvprintw(27 , Map::DISPLAY+34, "|");
+mvprintw(28 , Map::DISPLAY+34, "|");
+mvprintw(29 , Map::DISPLAY+34, "|");
+mvprintw(30 , Map::DISPLAY+34, "|");
+mvprintw(31 , Map::DISPLAY+34, "|");
+mvprintw(32 , Map::DISPLAY+34, "|");
+mvprintw(33 , Map::DISPLAY+34, "|");
+mvprintw(34 , Map::DISPLAY+34, "|");
+mvprintw(35 , Map::DISPLAY+34, "|");
 
 refresh(); //Refreshes map after player input or TIMEOUT
 
