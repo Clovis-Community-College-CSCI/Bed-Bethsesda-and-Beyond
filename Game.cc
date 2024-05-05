@@ -1,6 +1,7 @@
 #include "Map.h"
 #include <unistd.h>
 #include "Brandis.cc"
+#include "TicTacToe.cc"
 #include <vector>
 
 const int MAX_FPS = 90;
@@ -114,13 +115,54 @@ else if (ch == ERR) { //If the player presses nothing, nothing will happen.
 //Map refresh and player movement conditions
 if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change to x or y coord
 
+/*
+//Final Gate Puzzle
 	if (map.isKey(x, y, Map::BKEY)) {
-		map.removeMap();
+		turn_off_ncurses();	
 		CarMain();
+		turn_on_ncurses();
 
-	}
+		// Opens Door if Player Wins Puzzle
+		if (Complete == true){
+			for (size_t i = 0; i < Map::SIZE; i++) {
+				for(size_t j = 0; j < Map::SIZE; j++) {
+					if (map.objectLocation(j,i) == Map::BDOOR) { 
+						map.changeObject(j, i, Map::OPEN); 			
+					}
+					if (map.objectLocation(j,i) == Map::BKEY) {
+						map.changeObject(j, i, Map::OPEN);
+					}
+				}
+			}
+		}
 
-	/*if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
+
+	} //End of Puzzle Function
+	*/
+/*
+//Tic Tac Toe Puzzle
+if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
+		turn_off_ncurses();
+		TicTacToemain();
+		turn_on_ncurses();
+
+		if (playerWin == true){
+			for (size_t i = 0; i < Map::SIZE; i++) {
+				for(size_t j = 0; j < Map::SIZE; j++) {
+					if (map.objectLocation(j,i) == Map::BDOOR) { 
+					map.changeObject(j, i, Map::OPEN); 					
+					}
+					if (map.objectLocation(j,i) == Map::BKEY) {
+						map.changeObject(j, i, Map::OPEN);
+					}
+
+				}
+			}
+		}
+	}//End of Tic Tac Toe Puzzle
+	*/
+
+	if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
 		for (size_t i = 0; i < Map::SIZE; i++) {
 			for(size_t j = 0; j < Map::SIZE; j++) {
 				if (map.objectLocation(j,i) == Map::BDOOR) { //Retrieves the location of every instance of BDOOR
@@ -128,7 +170,7 @@ if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change t
 				}
 			}
 		}
-	}*/
+	}
 
 	if (map.isKey(x , y , Map::GKEY)) { //Runs isKey function from Map.h
 		for (size_t i = 0; i < Map::SIZE; i++) {

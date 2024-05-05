@@ -179,6 +179,9 @@ void removeMap() {
 
 }
 
+void refreshMap() {
+	refresh();
+}
 
 
 
