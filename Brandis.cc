@@ -49,7 +49,7 @@ void DisplayBoard() {
 
 void Dupe() {cout << "You already cut that wire." << endl; } // Quick function for output
 
-int main() {
+int CarMain() {
 	bool Complete = false; // Check if the puzzle is completed
 	bool Failed = false; // Check if puzzle has been failed
 

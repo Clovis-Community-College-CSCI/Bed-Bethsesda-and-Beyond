@@ -13,7 +13,7 @@ void exit() {
 	exit(1);
 }
 
-int main() {
+int LockMain() {
 	initscr(); // Initialize ncurses
 	keypad(stdscr, TRUE); // Enable keypad
 

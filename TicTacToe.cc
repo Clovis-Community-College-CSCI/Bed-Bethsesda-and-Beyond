@@ -138,7 +138,7 @@ int findBestMove() {
     return moves[bestMoveIndex];
 }
 
-int main() {
+int TicTacToemain() {
     int move;
     cout << "Welcome to Tic Tac Toe!" << endl;
     drawBoard();
