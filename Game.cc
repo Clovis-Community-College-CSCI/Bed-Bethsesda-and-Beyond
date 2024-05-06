@@ -205,7 +205,7 @@ if (map.isDesk(x , y)) { //Runs isDesk function from Map.h
 		cout << "You happen upon the Warden's Desk." << endl;
 		cout << "You only have a few minutes before the warden!"<< endl;
 		cout << "HURRY BEFORE YOU ARE CAUGHT!!!" <<endl;
-		sleep (3);
+		sleep (1);
 		
 		deskMain();
 
@@ -318,7 +318,7 @@ mvprintw(26 , Map::DISPLAY+3, "Cell Key");
 
 if (manual == true) {
 
-mvprintw(32 , Map::DISPLAY+3, "Wire Order: 1 2 5 6 8 10");
+mvprintw(32 , Map::DISPLAY+3, "Wire Order: '1 2 5 6 8 10'");
 }
 
 if (greenKey == true) {
