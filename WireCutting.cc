@@ -63,7 +63,7 @@ int CarMain() {
 				Wire6 == true and Wire7 == false and Wire8 == true and Wire9 == false and Wire10 == true) { // If all of the correct wires are cut
 				cout << "You successfully completed the puzzle!" << endl;
 				Complete = true;
-
+				sleep(3);
 				return 0;
 			}
 			if (Wire3 == true or Wire4 == true or Wire7 == true or Wire9 == true) {
