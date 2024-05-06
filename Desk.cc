@@ -253,8 +253,9 @@ int deskMain() {
 		}
 		if (chances == 1) {
 			cout << "You've Been Caught!" << endl;
+			cout << "GAME OVER" << endl;
 			sleep(3);
-			break;
+			exit(EXIT_SUCCESS);
 
 		}
 		chances--;

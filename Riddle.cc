@@ -6,7 +6,7 @@
 using namespace std;
 
 void wait() {
-	this_thread::sleep_for(chrono::milliseconds(2000));
+	this_thread::sleep_for(chrono::milliseconds(1000));
 	cout << endl;
 
 }
