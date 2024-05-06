@@ -68,7 +68,7 @@ if (ch == 'q' or ch == 'Q') {
 //Only allows movement if current positio3n + 1 is not a door or wall.
 else if (ch == RIGHT){
 
-	if (!map.isDoor(x+1, y) and  !map.hasWall(x+1,y)){
+	if (!map.isDoor(x+1, y) and  !map.hasWall(x+1,y) and !map.isInmate(x+1,y)){
 		x++;
 		//The :: is used to access the SIZE member of the Map class to check x coord
 		if (x>= Map :: SIZE) {
@@ -81,7 +81,7 @@ else if (ch == RIGHT){
 //Only allows movement if current position - 1 is not a door or wall.
 else if (ch == LEFT) {
     
-	if (!map.isDoor(x-1, y) and  !map.hasWall(x-1, y)) {
+	if (!map.isDoor(x-1, y) and  !map.hasWall(x-1, y) and !map.isInmate(x-1,y)) {
 		x--;
 		//Checks if x coord would leave map min value and sets the x coord back to 0 if so.
 		if ( x < 0) {
@@ -93,7 +93,7 @@ else if (ch == LEFT) {
 //Player input for Up Arrow Key, checks if x coord is not a door or wall.
 //Only allows movement if current position + 1 is not a door or wall.
 else if (ch == UP) {
-    if(!map.isDoor(x, y-1) and !map.hasWall(x, y-1)) {
+    if(!map.isDoor(x, y-1) and !map.hasWall(x, y-1) and !map.isInmate(x,y-1)) {
 		y--;
 		if (y <0) {
 			y = 0;
@@ -104,7 +104,7 @@ else if (ch == UP) {
 //Player input for DOWN Arrow Key, checks if x coord is not a door or wall.
 //Only allows movement if current position + 1 is not a door or wall.
 else if (ch == DOWN) {
-    if(!map.isDoor(x, y+1) and !map.hasWall(x,y+1) ){
+    if(!map.isDoor(x, y+1) and !map.hasWall(x,y+1) and !map.isInmate(x,y+1)){
 		y++;
 		if (y >= Map :: SIZE) y= Map :: SIZE -1;
 }}
@@ -139,28 +139,45 @@ if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change t
 
 	} //End of Puzzle Function
 	*/
-/*
+
 //Tic Tac Toe Puzzle
-if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
+if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 		turn_off_ncurses();
-		TicTacToemain();
-		turn_on_ncurses();
+		char choice;
+		cout << "Want to play a game?" << endl;
+		cout << "If you beat me, I'll give you a Lockpick!"<<endl;
+		cout << "1. Yes" << endl;
+		cout << "2. No" << endl;
+		cin >> choice;
+		while (choice != '1' && choice != '2') {
+			cout << "You're talking nonsense, do you want to play or not?"<<endl;
+			cin >> choice;
+		}
+		if (choice == '2') {
+			cout <<"I'll be here when you change your mind."<<endl;
+			sleep(2);
+			
+		}
+		if (choice == '1') {
+			TicTacToemain();
+			
+			if (playerWin == true){
+				for (size_t i = 0; i < Map::SIZE; i++) {
+					for(size_t j = 0; j < Map::SIZE; j++) {
+						if (map.objectLocation(j,i) == Map::GDOOR) { 
+						map.changeObject(j, i, Map::OPEN); 					
+						}
+						if (map.objectLocation(j,i) == Map::NPC) {
+							map.changeObject(j, i, Map::OPEN);
+						}
 
-		if (playerWin == true){
-			for (size_t i = 0; i < Map::SIZE; i++) {
-				for(size_t j = 0; j < Map::SIZE; j++) {
-					if (map.objectLocation(j,i) == Map::BDOOR) { 
-					map.changeObject(j, i, Map::OPEN); 					
 					}
-					if (map.objectLocation(j,i) == Map::BKEY) {
-						map.changeObject(j, i, Map::OPEN);
-					}
-
 				}
 			}
 		}
+		turn_on_ncurses();
 	}//End of Tic Tac Toe Puzzle
-	*/
+	
 
 	if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
 		for (size_t i = 0; i < Map::SIZE; i++) {

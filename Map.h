@@ -243,6 +243,14 @@ bool isDoor(int x, int y) {
 		map.at(y).at(x) == YDOOR;
     }
 
+//Check for Inmates, prevents player from interacting with non NPC Inmates
+bool isInmate(int x, int y) { 
+    return map.at(y).at(x) == INMATE;
+	}
+//Checks if player touches NPC
+bool isNPC(int x, int y) { 
+    return map.at(y).at(x) == NPC;
+	}
 //Check for walls, prevents player from moving past wall
 bool hasWall(int x, int y) { 
     return map.at(y).at(x) == WALL;
