@@ -4,6 +4,8 @@
 
 using namespace std;
 
+bool lockWin = false;
+
 void L(int x,int xa,int xb,int y,int ya,int yb,int z,int za,int zb) {
 	cout << " ___________" << endl;
 	cout << "│           │" << endl;
@@ -33,30 +35,34 @@ bool isnum (const string &str) {
 
 }
 
-int LockMain(){
+int LockMain() {
 
 	string code;
 	int xb = 5, yb = 8, zb = 2;
 	int x = 4, y = 7, z = 1;
 	int xa = 3, ya = 6, za = 9;
 	int time = 0;
-	bool lockWin = false;
-	bool w = false;
+	int w = 0;
 
 
 	L(x, xa, xb, y, ya, yb, z, za, zb);
 
 	while (true) {
-		cout << "Enter a 3 digit code (1-9)." << endl;
+		cout << "Enter a 3 digit code (1-9) or 'q' to exit." << endl;
 		cout << endl;
 		cin >> code;
 		cout << endl;
 		wait(time = 1000);
-
-		if (code.size() != 3 || isnum(code) == false) {
+		
+		if (code[0] == 'q' && code.length() == 1) {
+			cout << "Goodbye!" << endl;
+			wait(time = 2000);
+			return 0;
+		}
+		else if (code.size() != 3 || isnum(code) == false) {
 			cout << "That doesn't work for a 3 digit lock silly." << endl;
 			wait(time = 2000);
-			w = true;
+			w = 1;
 		}
 		else {
 			char x1 = code[0];
@@ -90,17 +96,17 @@ int LockMain(){
 		if (x == 9 && y == 2 && z == 5){
 			cout << "That's correct!!" << endl;
 			cout << endl;
-			lockWin = true;
 			wait(time = 2000);
 			cout << "Woohoo!" << endl;
 			wait(time = 1000);
+			lockWin = true;
 			return 0;
 		}
 		if (x != 9 || y != 2 || z != 5) {
-			if (w == true) {
+			if (w == 1) {
 				cout << "Try Again" << endl;
 				cout << endl;
-				w = false;
+				w = 0;
 			}
 			else {
 				cout << "WRONG" << endl;
