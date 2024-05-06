@@ -130,7 +130,7 @@ void init_map() {
 		map.at(143).at(i) = WALL;
 	}
 	
-	//Inmates at Tables
+	//Inmates at Table 1
 	map.at(108).at(232) = INMATE;
 	map.at(108).at(235) = INMATE;
 	map.at(108).at(238) = NPC;
@@ -141,10 +141,36 @@ void init_map() {
 	map.at(104).at(235) = INMATE;
 	map.at(104).at(238) = INMATE;
 	map.at(104).at(241) = INMATE;
-	map.at(104).at(244) = NPC;
+	map.at(104).at(244) = INMATE;
 	map.at(104).at(247) = INMATE;
 
+	//Inmates at Table 2
+	map.at(123).at(232) = INMATE;
+	map.at(123).at(235) = INMATE;
+	map.at(123).at(238) = INMATE;
+	map.at(123).at(241) = INMATE;
+	map.at(123).at(244) = INMATE;
+	map.at(123).at(247) = INMATE;
+	map.at(127).at(232) = INMATE;
+	map.at(127).at(235) = INMATE;
+	map.at(127).at(238) = INMATE;
+	map.at(127).at(241) = INMATE;
+	map.at(127).at(244) = INMATE;
+	map.at(127).at(247) = INMATE;
 
+	//Inmates at Table 3
+	map.at(140).at(232) = INMATE;
+	map.at(140).at(235) = INMATE;
+	map.at(140).at(238) = INMATE;
+	map.at(140).at(241) = INMATE;
+	map.at(140).at(244) = INMATE;
+	map.at(140).at(247) = INMATE;
+	map.at(144).at(232) = INMATE;
+	map.at(144).at(235) = INMATE;
+	map.at(144).at(238) = INMATE;
+	map.at(144).at(241) = INMATE;
+	map.at(144).at(244) = INMATE;
+	map.at(144).at(247) = INMATE;
 
 
 

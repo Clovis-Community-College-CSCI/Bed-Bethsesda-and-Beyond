@@ -12,6 +12,8 @@ const int DOWN = 66;
 const int LEFT = 68;
 const int RIGHT = 67;
 
+bool cellKey = false;
+bool lockPick = false;
 
 void turn_on_ncurses() {
     initscr(); //Starts NCURSES and creates a screen.
@@ -112,6 +114,7 @@ else if (ch == ERR) { //If the player presses nothing, nothing will happen.
 ;
 }
 
+
 //Map refresh and player movement conditions
 if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change to x or y coord
 
@@ -162,6 +165,8 @@ if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 			TicTacToemain();
 			
 			if (playerWin == true){
+				cout << "You played well, here's the Lockpick as promised!" <<endl;
+				sleep (3);
 				for (size_t i = 0; i < Map::SIZE; i++) {
 					for(size_t j = 0; j < Map::SIZE; j++) {
 						if (map.objectLocation(j,i) == Map::GDOOR) { 
@@ -175,6 +180,7 @@ if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 				}
 			}
 		}
+		lockPick = true;
 		turn_on_ncurses();
 	}//End of Tic Tac Toe Puzzle
 	
@@ -190,7 +196,7 @@ if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 				}
 			}
 		}
-	mvprintw(26 , Map::DISPLAY+3, "Cell Key");
+		cellKey = true;
 	}
 
 
@@ -230,6 +236,19 @@ mvprintw(32 , Map::DISPLAY+34, "|");
 mvprintw(33 , Map::DISPLAY+34, "|");
 mvprintw(34 , Map::DISPLAY+34, "|");
 mvprintw(35 , Map::DISPLAY+34, "|");
+
+if (cellKey == true) {
+	
+mvprintw(26 , Map::DISPLAY+3, "Cell Key");
+
+}
+
+if (lockPick == true) {
+	
+mvprintw(28 , Map::DISPLAY+3, "Lockpick");
+
+}
+
 
 refresh(); //Refreshes map after player input or TIMEOUT
 
