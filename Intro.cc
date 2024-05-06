@@ -34,6 +34,7 @@ cout << "The sign causes an earthquake to destroy the white house and kill the p
 cout << "You have been thrown in Jail." << endl;
 */
 cout << " " << endl;
+cout << "\t You have one job. Escape." << endl;
 
 for (int i = 0; i < 20; i++) Wait();
 

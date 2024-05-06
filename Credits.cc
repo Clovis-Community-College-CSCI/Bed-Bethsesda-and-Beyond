@@ -4,7 +4,7 @@
 using namespace std;
 
 void Wait() {
-	this_thread::sleep_for(chrono::milliseconds(500)); 
+	this_thread::sleep_for(chrono::milliseconds(100)); 
 	cout << endl;
 
 }
@@ -14,7 +14,7 @@ void Break() {
 }
 int main() {
 
-for (int i = 0; i < 5; i++) Wait();
+for (int i = 0; i < 2; i++) Wait();
 cout << "    _    _     ____    _  _____ ____      _     _____     _  _   _ " << endl;
 cout << "   / \\  | |   / ___|  / \\|_   _|  _ \\    / \\   |__  /    | || | / |" << endl;
 cout << "  / _ \\ | |  | |     / _ \\ | | | |_) |  / _ \\    / /_____| || |_| |" << endl;
@@ -33,6 +33,9 @@ cout << "The sign falls onto the road and decimates a family of 4. "<< endl;
 cout << "The sign causes an earthquake to destroy the white house and kill the president." << endl;
 cout << "You have been thrown in Jail." << endl;
 */
+cout << "\033[1m" << "\t\t               ROLES " << "\033[0m" <<endl;
+Wait();
+Wait();
 cout << "\t\tProject Leader: Moehammed Moehammed" << endl;
 Wait();
 cout << "\t\t   JJK Curse Lord: Michael Moran " << endl;
@@ -54,8 +57,18 @@ Wait();
 cout << "\t\t        Ghost: Sandra Romero" << endl;
 Wait();
 Wait();
+cout << "\033[1m" << "\t\t          Special Thanks " << "\033[0m" <<endl;
+Wait();
+Wait();
+cout << "\t\t         Justis Mencarelli " << endl;
+Wait();
+cout << "\t\t          Julian Laxamana " << endl;
+Wait();
+cout << "\t\t                YOU!        " << endl;
+Wait();
+Wait();
 
-cout << "\t\t         THANKS FOR PLAYING!" << endl;
+cout << "\033[1m" << "\t\t         THANKS FOR PLAYING!" << "\033[0m" << endl;
 for (int i = 0; i < 20; i++) Wait();
 
 
