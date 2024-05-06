@@ -4,13 +4,13 @@
 using namespace std;
 
 void Wait() {
-	this_thread::sleep_for(chrono::milliseconds(100)); 
+	this_thread::sleep_for(chrono::milliseconds(500)); 
 	cout << endl;
 
 }
 
 void Break() {
-	for (int i = 0; i < 5; i++ ) cout << endl;
+	for (int i = 0; i < 4; i++ ) cout << endl;
 }
 int main() {
 
@@ -24,6 +24,18 @@ cout << "/_/   \\_\\_____\\____/_/   \\_\\_| |_| \\_\\/_/   \\_\\/____|       |_
 Break();
 
 for (int i = 0; i < 5; i++) Wait();
+cout << "\t\t        You escaped the prison!" << endl;
+Wait();
+Wait();
+cout << "\t  You put your aquatic training and swam to shore. " << endl;
+Wait();
+Wait();
+cout << "  You life the rest of your life undercover enjoying your freedom. " << endl;
+Wait();
+Wait();
+for (int i = 0; i < 5; i++) Wait();
+
+Break();
 
 /*
 cout << "A long time ago in a college far far away... " << endl;
