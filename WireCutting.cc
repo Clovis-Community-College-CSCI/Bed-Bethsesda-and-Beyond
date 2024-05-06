@@ -71,6 +71,7 @@ int CarMain() {
 				cout << "You've set off the alarm!" << endl;
 				cout << "YOU LOSE!" << endl;
 				sleep(3);
+				exit(EXIT_FAILURE);	
 				;
 			}
 			int WireInput = 0;
