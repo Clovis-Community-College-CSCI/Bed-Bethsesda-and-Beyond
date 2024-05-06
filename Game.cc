@@ -8,6 +8,8 @@
 #include "Lock.cc"
 #include "Riddle.cc"
 #include <vector>
+#include "WireManual.h"
+#include "Intro.cc"
 
 const int MAX_FPS = 90;
 const unsigned int TIMEOUT = 10;
@@ -55,11 +57,15 @@ if (system("clear")) {} //Clears the terminal
 
 int main() {
 
+
+IntroMain(); // Runs the intro
+
 int x,y; // x and y coords. Used to display current player pos and check boundaries.
 
 printf("Game Over\n"); //Prints this after NCURSES ends, allows determination of NCURSES state.
 
 turn_on_ncurses(); //Runs function in main
+
 
 Map map; //Creates map instance from Map class in Map.h
 
@@ -118,10 +124,24 @@ else if (ch == DOWN) {
     if(!map.isDoor(x, y+1) and !map.hasWall(x,y+1) and !map.isInmate(x,y+1)){
 		y++;
 		if (y >= Map :: SIZE) y= Map :: SIZE -1;
-}}
+	}
+}
+
+else if (ch == 'i' or ch == 'I') {
+	if (manual == true) {
+		turn_off_ncurses();
+		ManualMain();	
+		turn_on_ncurses();
+	}
+}
+
+
 else if (ch == ERR) { //If the player presses nothing, nothing will happen.
 ;
 }
+
+
+
 
 
 //Map refresh and player movement conditions
@@ -318,7 +338,7 @@ mvprintw(26 , Map::DISPLAY+3, "Cell Key");
 
 if (manual == true) {
 
-mvprintw(32 , Map::DISPLAY+3, "Wire Order: '1 2 5 6 8 10'");
+mvprintw(32 , Map::DISPLAY+3, "Wire Manual(Press i to open)");
 }
 
 if (greenKey == true) {
