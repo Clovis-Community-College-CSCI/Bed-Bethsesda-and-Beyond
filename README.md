@@ -60,3 +60,5 @@ Day 4: Server.cc file was worked on and forweard progress. Ideas like a car manu
 Day 5: Tic Tac Toe was started, which is one of the puzzles we will have in the game. 
 
 Day 6: Intro.cc was started. Puzzle functionality during the game is being worked on. Also, the test cases for the puzzles his mostly done. Some forward progress on the server and client.cc. For Ncurses, the player cell spawn point was created, inventory box as well. Key works for opening doors. 3 different door colors now unlock with the puzzle win conditions. The Mess Hall was also added to the map as well as the puzzle integration was added successfully.
+
+Day 7: Integration was finalized and had a last vc meeting to try to connect the dots. The game works and everything is visually appealing!
