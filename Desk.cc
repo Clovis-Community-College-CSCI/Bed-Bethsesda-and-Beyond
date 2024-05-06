@@ -126,7 +126,7 @@ int deskMain() {
 				cout << "1.Marker" << endl;
 				cout << "2.Fortune Cookie" << endl;
 				cout << "3.Straw" << endl;
-				cout << "4.**Note**" << endl;
+				cout << "4.**Strange Book**" << endl;
 				cout << endl;
 				cout << "Choose 1-4 or enter q to go back" << endl;
 				cout << endl;
@@ -148,7 +148,7 @@ int deskMain() {
 				}
 				if (x == '4'){
 					cout << endl;
-					cout << "A manual on wire cutting" << endl;
+					cout << "A manual on wire cutting!" << endl;
 					cout << endl;
 					x = 'q';
 					deskWin = true;
@@ -241,7 +241,7 @@ int deskMain() {
 		else { cout << "You see nothing" << endl;
 		}
 		if (deskWin == true) {
-			cout << "You found a secret manual!" << endl;
+			cout << "You found what you were looking for!" << endl;
 			sleep(3);
 			return 0;
 		}

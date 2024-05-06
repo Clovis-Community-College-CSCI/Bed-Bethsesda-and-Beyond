@@ -2,6 +2,7 @@
 // Role: ISAD
 // Puzzles
 #include <iostream>
+#include "unistd.h"
 using namespace std;
 
 #define RESET   "\033[0m"
@@ -67,10 +68,10 @@ int CarMain() {
 			}
 			if (Wire3 == true or Wire4 == true or Wire7 == true or Wire9 == true) {
 				cout << "You cut the wrong wire!" << endl;
-				cout << "The car exploded!" << endl;
+				cout << "You've set off the alarm!" << endl;
 				cout << "YOU LOSE!" << endl;
-				Failed = true;
-				break;
+				sleep(3);
+				;
 			}
 			int WireInput = 0;
 			DisplayBoard();

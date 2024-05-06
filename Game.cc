@@ -136,11 +136,11 @@ if (map.isBen(x , y)) {
 }
 
 if (map.isLock(x, y)) {
-	turn_off_ncurses();
-		LockMain();
-	turn_on_ncurses();
-
-	if ( lockWin == true) {
+	//turn_off_ncurses();
+	//LockMain();
+	//turn_on_ncurses();
+	lockWin = true;
+	if (lockWin == true) {
 		for (size_t i = 0; i < Map::SIZE; i++) {
 			for(size_t j = 0; j < Map::SIZE; j++) {
 				if (map.objectLocation(j,i) == Map::CDOOR) { 
