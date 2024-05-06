@@ -206,7 +206,8 @@ mvprintw(15 , Map::DISPLAY+14, "X: %i Y: %i\n", x,y); //Displays player's curren
 
 //Inventory Box
 //Top
-mvprintw(25 , Map::DISPLAY+2, "---------------------------------");
+//mvprintw(25 , Map::DISPLAY+2, "—————————————————————————————————");
+mvprintw(25 , Map::DISPLAY+2, "--------------------------------");
 
 //Left side
 mvprintw(25 , Map::DISPLAY+1, "|");
@@ -223,6 +224,7 @@ mvprintw(35 , Map::DISPLAY+1, "|");
 
 //Bottom
 mvprintw(35 , Map::DISPLAY+2, "--------------------------------");
+//mvprintw(35 , Map::DISPLAY+2, "—————————————————————————————————");
 
 //Right side
 mvprintw(25 , Map::DISPLAY+34, "|");
