@@ -6,11 +6,17 @@ Imagine your an inmate that has got locked up. Well, you're in luck because it's
 
 # Your Mission 🎯 
 
--Escape the prison! 
+-Escape the prison!
+
+![small prison](https://github.com/Clovis-Community-College-CSCI/Bed-Bethsesda-and-Beyond/assets/154694888/e2550157-ebd6-4cb8-a757-f389b29829ea)
+
+
+-Play minigames to unlock items that will help you progress. 
 
 -Make sure to be sneaky and avoid the patrolling guards while your at it. 
 
--Play minigames to unlock items that will help you progress. 
+![guards](https://github.com/Clovis-Community-College-CSCI/Bed-Bethsesda-and-Beyond/assets/154694888/ba520913-0e9b-440f-a618-ac5bcf0a094b)
+
 
 -Use your (low) IQ to solve the riddle.
 
