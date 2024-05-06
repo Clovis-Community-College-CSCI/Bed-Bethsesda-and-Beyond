@@ -10,6 +10,7 @@
 #include <vector>
 #include "WireManual.h"
 #include "Intro.cc"
+#include "Lunchlady.cc"
 
 const int MAX_FPS = 90;
 const unsigned int TIMEOUT = 10;
@@ -153,6 +154,11 @@ if (map.isBen(x , y)) {
 	if (riddleWin == true) {
 		magentaKey = true;
 	}
+}
+
+if (map.isLunch(x , y)) {
+	turn_off_ncurses();
+	Lunchmain();
 }
 
 if (map.isLock(x, y)) {

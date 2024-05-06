@@ -30,6 +30,7 @@ static const char BOX = '[';
 static const char NPC = 'O';
 static const char DESK = '~';
 static const char ESCAPE = 'E';
+static const char LADY = 'L';
 static const size_t SIZE = 400;
 static const size_t DISPLAY = 40;
 
@@ -189,6 +190,7 @@ void init_map() {
 		map.at(i).at(253) = WALL;
 	}
 	map.at(147).at(254) = BEN;
+	map.at(125).at(262) = LADY;
 	map.at(199).at(238) = LOCK;
 	
 	//Warden Room Entrance
@@ -380,6 +382,10 @@ bool isBox(int x, int y) {
 bool isBen(int x, int y) {
 	return map.at(y).at(x) == BEN;
 	}
+
+bool isLunch(int x, int y) {
+	return map.at(y).at(x) == LADY;
+}
 //Checks for desk
 bool isDesk(int x, int y) {
 	return map.at(y).at(x) == DESK;
@@ -397,6 +403,7 @@ bool isKey(int x, int y, char keyColor) {
 bool isEscape(int x, int y) {
 	return map.at(y).at(x) == ESCAPE;
 }
+
 
 void removeMap() {
 	map.clear();

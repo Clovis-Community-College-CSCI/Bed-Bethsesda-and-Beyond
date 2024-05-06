@@ -31,7 +31,7 @@ Wait();
 cout << "\t  You put your aquatic training and swam to shore. " << endl;
 Wait();
 Wait();
-cout << "  You life the rest of your life undercover enjoying your freedom. " << endl;
+cout << "  You live the rest of your life undercover enjoying your freedom. " << endl;
 Wait();
 Wait();
 for (int i = 0; i < 5; i++) Wait();
