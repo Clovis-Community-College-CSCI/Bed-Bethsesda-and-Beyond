@@ -14,15 +14,22 @@ public:
 
 //Characters and objects
 static const char YOU = '@';
+static const char BEN = 'o';
 static const char INMATE = '0'; 
 static const char WALL = '#';
+static const char LOCK = 'X';
 static const char BDOOR = '=';
 static const char GDOOR = '-';
-static const char YDOOR = '_';
+static const char CDOOR = '+';
+static const char YDOOR = '|';
+static const char MDOOR = '!';
 static const char OPEN = ' ';
 static const char GUARD = 'G';
 static const char BKEY = 'K';
+static const char BOX = '[';
 static const char NPC = 'O';
+static const char DESK = '~';
+static const char ESCAPE = 'E';
 static const size_t SIZE = 400;
 static const size_t DISPLAY = 40;
 
@@ -53,7 +60,7 @@ void init_map() {
 		}
 	  }*/
 
-	//map.at(down row).at(right column) = Object
+	 //map.at(down row y).at(right column x) = Object
 
 	//Prison Cell Block A - Player's Cell
 	for (size_t i = 1; i < 21; i++){ //Left Wall
@@ -95,7 +102,9 @@ void init_map() {
 	for (size_t i = 100; i < 150; i++) {//Top Left
 		map.at(i).at(263) = WALL;
 	}
-
+	for (size_t i = 237; i <= 242 ; i++){ //Green Door
+		map.at(149).at(i) = GDOOR;
+	}
 	//Mess Hall Tables
 	//Top Table
 	for (size_t i = 230; i <= 250; i++) {//Top Layer
@@ -133,7 +142,7 @@ void init_map() {
 	//Inmates at Table 1
 	map.at(108).at(232) = INMATE;
 	map.at(108).at(235) = INMATE;
-	map.at(108).at(238) = NPC;
+	map.at(108).at(238) = INMATE;
 	map.at(108).at(241) = INMATE;
 	map.at(108).at(244) = INMATE;
 	map.at(108).at(247) = INMATE;
@@ -161,7 +170,7 @@ void init_map() {
 	//Inmates at Table 3
 	map.at(140).at(232) = INMATE;
 	map.at(140).at(235) = INMATE;
-	map.at(140).at(238) = INMATE;
+	map.at(140).at(238) = NPC;
 	map.at(140).at(241) = INMATE;
 	map.at(140).at(244) = INMATE;
 	map.at(140).at(247) = INMATE;
@@ -172,13 +181,83 @@ void init_map() {
 	map.at(144).at(244) = INMATE;
 	map.at(144).at(247) = INMATE;
 
+	//Mess Hall Corridor
+	for (size_t i = 150; i < 200; i++) { //Left Wall
+		map.at(i).at(225) = WALL;
+	}
+	for (size_t i = 150; i <= 200; i++) { //Right Wall
+		map.at(i).at(253) = WALL;
+	}
+	map.at(147).at(254) = BEN;
+	map.at(199).at(238) = LOCK;
+	
+	//Warden Room Entrance
+	for (size_t i = 200; i <= 278; i++){ //Top Wall
+		map.at(200).at(i) = WALL;
+	}
+ 	for (size_t i = 200; i < 225; i++){ //Right Wall
+		map.at(i).at(278) = WALL;
+	}   
+	for (size_t i = 200; i <= 225; i++){ //Left Wall
+		map.at(i).at(200) = WALL;
+	}
+	for (size_t i = 200; i <= 278; i++){ //Bottom Wall
+		map.at(225).at(i) = WALL;
+	}
+	for (size_t i = 237; i <= 242 ; i++){ //C Door
+		map.at(200).at(i) = CDOOR;
+	}
+	
+	//Warden Desk Puzzle
+	for (size_t i = 230; i <= 249; i++) {//Top Layer
+		map.at(217).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 249; i++) {//Middle Layer
+		map.at(218).at(i) = WALL;
+	}
+	for (size_t i = 230; i <= 249; i++) {//Bottom Layer
+		map.at(219).at(i) = WALL;
+	}
+	for (size_t i = 237; i <= 242; i++) {//Bottom Layer
+		map.at(219).at(i) = DESK;
+	}
+ 	for (size_t i = 219; i < 224; i++){ //MDOOR
+		map.at(i).at(278) = MDOOR;
+	}   
 
+	//Final Hall
+	for (size_t i = 279; i <= 320; i++) {//Top Layer
+		map.at(217).at(i) = WALL;
+	}
+	for (size_t i = 279; i <= 320; i++) {//Top Layer
+		map.at(225).at(i) = WALL;
+	}
+	map.at(224).at(320) = WALL;
+	map.at(218).at(320) = WALL;
 
-
-
-
-
-
+	for (size_t i = 219; i <= 223; i++) {//Top Layer
+		map.at(i).at(320) = YDOOR;
+	}
+	map.at(218).at(319) = BOX;
+	for (size_t i = 217; i <= 225; i++) {
+		map.at(i).at(321) = ESCAPE;
+	}
+	map.at(218).at(319) = BOX;
+	for (size_t i = 217; i <= 225; i++) {
+		map.at(i).at(322) = ESCAPE;
+	}
+	map.at(218).at(319) = BOX;
+	for (size_t i = 217; i <= 225; i++) {
+		map.at(i).at(323) = ESCAPE;
+	}
+	map.at(218).at(319) = BOX;
+	for (size_t i = 217; i <= 225; i++) {
+		map.at(i).at(324) = ESCAPE;
+	}
+	map.at(218).at(319) = BOX;
+	for (size_t i = 217; i <= 225; i++) {
+		map.at(i).at(325) = ESCAPE;
+	}
 
 
 } // End of init_map
@@ -233,17 +312,29 @@ for (size_t i = start_y; i <= end_y; i++) { //Total rows displayed on screen
  	 	else if (map.at(i).at(j) == GDOOR)
      	color = 7;
 	 	else if (map.at(i).at(j) == YDOOR)
-     	color = 4;
+     	color = 6;
+		else if (map.at(i).at(j) == MDOOR)
+		color = 6;
+		else if (map.at(i).at(j) == CDOOR)
+		color = 7;
+		else if (map.at(i).at(j) == BOX)
+		color = 4;
      	else if (map.at(i).at(j) == YOU)
      	color = 3;
      	else if (map.at(i).at(j) == BKEY)
      	color = 2;
      	else if (map.at(i).at(j) == NPC)
      	color = 4;
+		else if (map.at(i).at(j) == ESCAPE)
+		color = 4;
      	else if (map.at(i).at(j) == INMATE)
      	color = 3;
      	else if (map.at(i).at(j) == GUARD)
      	color = 5;
+     	else if (map.at(i).at(j) == DESK)
+     	color = 4;
+		else if (map.at(i).at(j) == LOCK)
+		color = 4;
 
      	attron(COLOR_PAIR(color));
      	mvaddch(i-start_y, j-start_x, map.at(i).at(j));
@@ -266,16 +357,32 @@ void changeObject(int x, int y, char object) {
 bool isDoor(int x, int y) {
     return map.at(y).at(x) == BDOOR ||
 		map.at(y).at(x) == GDOOR ||
-		map.at(y).at(x) == YDOOR;
+		map.at(y).at(x) == YDOOR ||
+		map.at(y).at(x) == CDOOR ||
+		map.at(y).at(x) == MDOOR;
     }
 
 //Check for Inmates, prevents player from interacting with non NPC Inmates
 bool isInmate(int x, int y) { 
     return map.at(y).at(x) == INMATE;
 	}
+bool isLock(int x, int y) {
+	return map.at(y).at(x) == LOCK;
+	}
 //Checks if player touches NPC
 bool isNPC(int x, int y) { 
     return map.at(y).at(x) == NPC;
+	}
+//Checks for lock box
+bool isBox(int x, int y) { 
+    return map.at(y).at(x) == BOX;
+	}
+bool isBen(int x, int y) {
+	return map.at(y).at(x) == BEN;
+	}
+//Checks for desk
+bool isDesk(int x, int y) {
+	return map.at(y).at(x) == DESK;
 	}
 //Check for walls, prevents player from moving past wall
 bool hasWall(int x, int y) { 
@@ -285,6 +392,10 @@ bool hasWall(int x, int y) {
 //Checks if player touches a key
 bool isKey(int x, int y, char keyColor) {
 	return map.at(y).at(x) == keyColor;
+}
+
+bool isEscape(int x, int y) {
+	return map.at(y).at(x) == ESCAPE;
 }
 
 void removeMap() {

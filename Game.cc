@@ -1,7 +1,12 @@
 #include "Map.h"
+#include <ncurses.h>
 #include <unistd.h>
-#include "Brandis.cc"
+#include "WireCutting.cc"
 #include "TicTacToe.cc"
+#include "Desk.cc"
+#include "Credits.cc"
+#include "LockPuzzle.cc"
+#include "Riddle.cc"
 #include <vector>
 
 const int MAX_FPS = 90;
@@ -13,7 +18,9 @@ const int LEFT = 68;
 const int RIGHT = 67;
 
 bool cellKey = false;
-bool lockPick = false;
+bool greenKey = false;
+bool magentaKey = false;
+bool manual = false;
 
 void turn_on_ncurses() {
     initscr(); //Starts NCURSES and creates a screen.
@@ -35,6 +42,8 @@ noecho(); //Prevents user input from being output on the screen as text.
 cbreak(); // Allows CTRL + C to be used to exit NCURSES.
 
 timeout(TIMEOUT); //Timeout for user input
+
+def_prog_mode();
 }
 
 void turn_off_ncurses() {
@@ -48,7 +57,7 @@ int main() {
 
 int x,y; // x and y coords. Used to display current player pos and check boundaries.
 
-printf("YOU LOSE!\n"); //Prints this after NCURSES ends, allows determination of NCURSES state.
+printf("Game Over\n"); //Prints this after NCURSES ends, allows determination of NCURSES state.
 
 turn_on_ncurses(); //Runs function in main
 
@@ -118,37 +127,42 @@ else if (ch == ERR) { //If the player presses nothing, nothing will happen.
 //Map refresh and player movement conditions
 if (x != old_x or y != old_y) { // Stop flickering by only redrawing on change to x or y coord
 
-/*
-//Final Gate Puzzle
-	if (map.isKey(x, y, Map::BKEY)) {
-		turn_off_ncurses();	
-		CarMain();
-		turn_on_ncurses();
+if (map.isBen(x , y)) {
+	turn_off_ncurses();
+	riddleMain();
+	if (riddleWin == true) {
+		magentaKey = true;
+	}
+}
 
-		// Opens Door if Player Wins Puzzle
-		if (Complete == true){
-			for (size_t i = 0; i < Map::SIZE; i++) {
-				for(size_t j = 0; j < Map::SIZE; j++) {
-					if (map.objectLocation(j,i) == Map::BDOOR) { 
-						map.changeObject(j, i, Map::OPEN); 			
-					}
-					if (map.objectLocation(j,i) == Map::BKEY) {
-						map.changeObject(j, i, Map::OPEN);
-					}
+if (map.isLock(x, y)) {
+	turn_off_ncurses();
+		LockMain();
+	turn_on_ncurses();
+
+	if ( lockWin == true) {
+		for (size_t i = 0; i < Map::SIZE; i++) {
+			for(size_t j = 0; j < Map::SIZE; j++) {
+				if (map.objectLocation(j,i) == Map::CDOOR) { 
+					map.changeObject(j, i, Map::OPEN); 					
 				}
+				if (map.objectLocation(j,i) == Map::LOCK) {
+					map.changeObject(j, i, Map::OPEN);
+				}
+
 			}
-		}
+		}	
 
+	}
 
-	} //End of Puzzle Function
-	*/
+}
 
 //Tic Tac Toe Puzzle
 if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 		turn_off_ncurses();
 		char choice;
 		cout << "Want to play a game?" << endl;
-		cout << "If you beat me, I'll give you a Lockpick!"<<endl;
+		cout << "If you beat me, I'll give you a Green Key!"<<endl;
 		cout << "1. Yes" << endl;
 		cout << "2. No" << endl;
 		cin >> choice;
@@ -165,7 +179,7 @@ if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 			TicTacToemain();
 			
 			if (playerWin == true){
-				cout << "You played well, here's the Lockpick as promised!" <<endl;
+				cout << "You played well, here's the Green Key as promised!" <<endl;
 				sleep (3);
 				for (size_t i = 0; i < Map::SIZE; i++) {
 					for(size_t j = 0; j < Map::SIZE; j++) {
@@ -180,10 +194,38 @@ if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 				}
 			}
 		}
-		lockPick = true;
+		greenKey = true;
 		turn_on_ncurses();
 	}//End of Tic Tac Toe Puzzle
-	
+
+//Desk Puzzle	
+if (map.isDesk(x , y)) { //Runs isDesk function from Map.h
+		turn_off_ncurses();
+		
+		cout << "You happen upon the Warden's Desk." << endl;
+		cout << "You only have a few minutes before the warden!"<< endl;
+		cout << "HURRY BEFORE YOU ARE CAUGHT!!!" <<endl;
+		sleep (3);
+		
+		deskMain();
+
+		if (deskWin == true){
+				
+				for (size_t i = 0; i < Map::SIZE; i++) {
+					for(size_t j = 0; j < Map::SIZE; j++) {
+						if (map.objectLocation(j,i) == Map::MDOOR) { 
+						map.changeObject(j, i, Map::OPEN); 					
+						}
+						if (map.objectLocation(j,i) == Map::DESK) {
+							map.changeObject(j, i, Map::OPEN);
+						}
+
+					}
+				}
+			}
+		manual = true;
+		turn_on_ncurses();
+	}
 
 	if (map.isKey(x , y , Map::BKEY)) { //Runs isKey function from Map.h
 		for (size_t i = 0; i < Map::SIZE; i++) {
@@ -199,6 +241,35 @@ if (map.isNPC(x , y)) { //Runs isInmate function from Map.h
 		cellKey = true;
 	}
 
+//Final Gate Puzzle
+
+	if (map.isBox(x, y)) {
+		turn_off_ncurses();
+		CarMain();
+		turn_on_ncurses();
+
+		// Opens Door if Player Wins Puzzle
+		if (Complete == true){
+			for (size_t i = 0; i < Map::SIZE; i++) {
+				for(size_t j = 0; j < Map::SIZE; j++) {
+					if (map.objectLocation(j,i) == Map::YDOOR) { 
+						map.changeObject(j, i, Map::OPEN); 			
+					}
+					if (map.objectLocation(j,i) == Map::BOX) {
+						map.changeObject(j, i, Map::OPEN);
+					}
+				}
+			}
+		}
+
+
+	} //End of Puzzle Function
+	
+
+	if (map.isEscape(x, y)) {
+		turn_off_ncurses();
+		creditsMain();
+	}
 
 map.draw(x,y); //Creates the map using the draw function from Map Class everytime there is a change to x or y coord
 
@@ -245,12 +316,22 @@ mvprintw(26 , Map::DISPLAY+3, "Cell Key");
 
 }
 
-if (lockPick == true) {
+if (manual == true) {
+
+mvprintw(32 , Map::DISPLAY+3, "Wire Order: 1 2 5 6 8 10");
+}
+
+if (greenKey == true) {
 	
-mvprintw(28 , Map::DISPLAY+3, "Lockpick");
+mvprintw(28 , Map::DISPLAY+3, "Green Key");
 
 }
 
+if (magentaKey == true) {
+	
+mvprintw(30 , Map::DISPLAY+3, "Note - '9 2 5'");
+
+}
 
 refresh(); //Refreshes map after player input or TIMEOUT
 

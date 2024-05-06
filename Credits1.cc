@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include "unistd.h"
 using namespace std;
 
 void Wait() {
@@ -12,7 +13,7 @@ void Wait() {
 void Break() {
 	for (int i = 0; i < 4; i++ ) cout << endl;
 }
-int main() {
+int creditsMain() {
 
 for (int i = 0; i < 2; i++) Wait();
 cout << "    _    _     ____    _  _____ ____      _     _____     _  _   _ " << endl;
@@ -80,8 +81,14 @@ cout << "\t\t                YOU!        " << endl;
 Wait();
 Wait();
 
+<<<<<<< HEAD
 cout << "\033[1m" << "\t\t         THANKS FOR PLAYING!" << "\033[0m" << endl;
 for (int i = 0; i < 20; i++) Wait();
+=======
+cout << "\t\t         THANKS FOR PLAYING!" << endl;
+sleep(4);
+exit(EXIT_SUCCESS);
+>>>>>>> 1146cf8 (Win condition complete, full map complete, puzzle integration complete, npc dialogue complete)
 
 
                                                                    

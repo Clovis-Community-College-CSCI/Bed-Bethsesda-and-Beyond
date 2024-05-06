@@ -1,6 +1,9 @@
 #include "/public/read.h"
+#include "unistd.h"
 
 using namespace std;
+
+bool deskWin = false;
 
 void desk() {
 	cout << " __________________________________________________________________________" << endl;
@@ -25,17 +28,16 @@ void desk() {
 	cout << "│____________________________│                │____________________________│" << endl;
 }
 
-int main() {
+int deskMain() {
 
 	int chances = 3;
 	int drawer = 0;
 	char x;
-	bool win = false;
 
 	desk();
 	cout << endl;
 	cout << "Choose a Drawer" << endl;
-	while (chances != 0 || drawer == 3 || win == false) {
+	while (chances != 0 || drawer == 3 || deskWin == false) {
 		cin >> drawer;
 		cout << endl;
 
@@ -73,8 +75,7 @@ int main() {
 				}
 				if (x == 'q'){
 					cout << endl;
-					cout << "Going Back" << endl;
-					cout << endl;
+					cout << " " << endl;
 				}
 			}
 			x = '0';
@@ -113,8 +114,7 @@ int main() {
 				}
 				if (x == 'q'){
 					cout << endl;
-					cout << "Going Back" << endl;
-					cout << endl;
+					cout << " " << endl;
 				}
 			}
 			x = '0';
@@ -148,14 +148,14 @@ int main() {
 				}
 				if (x == '4'){
 					cout << endl;
-					cout << "Locker Code:478" << endl;
+					cout << "A manual on wire cutting" << endl;
 					cout << endl;
-					win = true;
+					x = 'q';
+					deskWin = true;
 				}
 				if (x == 'q'){
 					cout << endl;
-					cout << "Going Back" << endl;
-					cout << endl;
+					cout << " " << endl;
 				}
 			}
 			x = '0';
@@ -174,7 +174,7 @@ int main() {
 				cin >> x;
 				if (x == '1'){
 					cout << endl;
-					cout << "The gaurds favorite snack." << endl;
+					cout << "The guards favorite snack." << endl;
 					cout << endl;
 				}
 				if (x == '2'){
@@ -194,8 +194,7 @@ int main() {
 				}
 				if (x == 'q'){
 					cout << endl;
-					cout << "Going Back" << endl;
-					cout << endl;
+					cout << " " << endl;
 				}
 			}
 			x = '0';
@@ -205,7 +204,7 @@ int main() {
 				cout << "You see" << endl;
 				cout << endl;
 				cout << "1.Inmate Files" << endl;
-				cout << "2.Gaurd Check Book" << endl;
+				cout << "2.Guard Check Book" << endl;
 				cout << "3.Lunch Lady's Number" << endl;
 				cout << "4.Love Letter From Lunch Lady" << endl;
 				cout << endl;
@@ -234,27 +233,28 @@ int main() {
 				}
 				if (x == 'q'){
 					cout << endl;
-					cout << "Going Back" << endl;
-					cout << endl;
+					cout << " " << endl;
 				}
 			}
 			x = '0';
 		}
 		else { cout << "You see nothing" << endl;
 		}
-		if (win == true) {
-			cout << "You found the code horay" << endl;
+		if (deskWin == true) {
+			cout << "You found a secret manual!" << endl;
+			sleep(3);
 			return 0;
 		}
 		if (chances == 3) {
-			cout << "You can hear the gaurds coming" << endl;
+			cout << "You can hear the guards coming" << endl;
 		}
 		if (chances == 2) {
 			cout << "They are getting closer..." << endl;
 		}
 		if (chances == 1) {
-			cout << "Its over for you" << endl;
-				return 0;
+			cout << "You've Been Caught!" << endl;
+			sleep(3);
+			break;
 
 		}
 		chances--;

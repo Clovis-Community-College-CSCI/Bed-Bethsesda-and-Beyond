@@ -1,12 +1,15 @@
 #include "/public/read.h"
+#include "unistd.h"
 
 using namespace std;
 
-int main() {
+bool riddleWin = false;
+
+int riddleMain() {
 
 	string y;
 	string x;
-	bool win = false;
+	
 
 	cout << "Yo I'm Bencarelli, whats your name" << endl;
 	cin >> y;
@@ -18,12 +21,14 @@ int main() {
 	cout << endl;
 	cin >> x;
 	if (x == "jail" || x == "prison" || x == "Prison" || x == "Jail") {
-		cout << "Correct, here take this electricians manual" << endl;
-		win = true;
+		cout << "Correct, here take this Note!" << endl;
+		riddleWin = true;
+		sleep(3);
 		return 0;
 	}
 	else {
 		cout << "WRONG now go away" << endl;
+		sleep(2);
 		return 0;
 	}
 

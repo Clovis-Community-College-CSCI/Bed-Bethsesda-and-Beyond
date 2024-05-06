@@ -4,15 +4,11 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include <unistd.h>
+
 using namespace std;
 
-void exit() {
-	endwin();
-	//cout << "Exiting..." << endl;
-	printw("Exiting...\n");
-	exit(1);
-}
-
+bool lockWin = false;
 int LockMain() {
 	initscr(); // Initialize ncurses
 	keypad(stdscr, TRUE); // Enable keypad
@@ -62,26 +58,26 @@ int LockMain() {
 			case KEY_RIGHT:
 				if (currentDigit < 3) currentDigit++;
 				break;
-			case 'q': exit();
-			case 'Q': exit();
+			case 'q': return 0;
+			case 'Q': return 0;
 			case 10: // Enter key
 				if (digit1 == 9 && digit2 == 2 && digit3 == 5) {
 					printw("The padlock opens!\n");
-					printw("Exiting...\n");
-					refresh();
-					getch(); // Wait for a key press
+					sleep(3);
 					//endwin(); // End ncurses mode
 					//return 0;
-					exit();
+					endwin();
+					lockWin = true;
+					return 0;
 				} else {
 					printw("Incorrect combination.\n");
 					refresh();
 					getch(); // Wait for a key press
 				}
-				break;
+				return 0;
 		}
 	}
 
-	endwin(); // End ncurses mode
+	 // End ncurses mode
 	return 0;
 }
