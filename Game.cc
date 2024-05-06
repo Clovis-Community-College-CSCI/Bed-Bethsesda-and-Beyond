@@ -5,7 +5,7 @@
 #include "TicTacToe.cc"
 #include "Desk.cc"
 #include "Credits.cc"
-#include "LockPuzzle.cc"
+#include "Lock.cc"
 #include "Riddle.cc"
 #include <vector>
 
@@ -136,9 +136,9 @@ if (map.isBen(x , y)) {
 }
 
 if (map.isLock(x, y)) {
-	//turn_off_ncurses();
-	//LockMain();
-	//turn_on_ncurses();
+	turn_off_ncurses();
+	LockMain();
+	turn_on_ncurses();
 	lockWin = true;
 	if (lockWin == true) {
 		for (size_t i = 0; i < Map::SIZE; i++) {
